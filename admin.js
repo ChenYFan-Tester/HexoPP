@@ -85,7 +85,7 @@ function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
 	});
 
 	function getdoc(){
-	url="/hpp/admin/api/getdoc/"+choo.value+"?_"+Date.parse(new Date())
+	url="/hpp/admin/api/getdoc/"+choo.value+"?_"+Date.now(new Date())
 	loadMarkdown(url);
 	};
 	function hpp_uploadmarkdown(){
