@@ -19,34 +19,12 @@
             try {
                 xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
             } catch (e) {
-                alert("您的浏览器不支持AJAX！");
+                sweetAlert("糟糕", "你的浏览器不能上传文件", "error");
                 return false;
             }
         }
     }
     return xmlHttp;
-}
- 
-// ajax post请求：
-function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
-    var ajax = ajaxObject();
-    ajax.open( "post" , url , true );
-    ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
-    ajax.onreadystatechange = function () {
-        if( ajax.readyState == 4 ) {
-            if( ajax.status == 200 ) {
-                fnSucceed( ajax.responseText );
-            }
-            else {
-                fnFail( "HTTP请求错误！错误码："+ajax.status );
-            }
-        }
-        else {
-            fnLoading();
-        }
-    }
-    ajax.send( data );
- 
 }
 	const loadMarkdown = (url) => {
                 mdeditor.value = '加载中。。。';
@@ -95,10 +73,10 @@ function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
     ajax.onreadystatechange = function () {
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
-                alert('200')
+                sweetAlert("成功",  "文件已上传", "success");
             }
             else {
-                alert('ERROR');
+                sweetAlert("糟糕", "上传文件失败!", "error");
             }
         }
     }
