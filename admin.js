@@ -1,4 +1,3 @@
-
 	function base64Encode(input){
                 var rv;
                 rv = encodeURIComponent(input);
@@ -78,6 +77,8 @@ function ajaxPost ( url , data , fnSucceed , fnFail , fnLoading ) {
 				  <option>${value.name}<\/option>
                 `);
             });
+			console.log('get!')
+			 $('#choo').editableSelect();
         });
 	$(function(){
 		$("#mdeditor").markdown({language:'zh'})
