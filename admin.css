@@ -453,7 +453,9 @@ header a{
 	display: block;
 }
 
-
+.form-control{
+	width: calc(100vw - 240px) !important;
+	}
 /* Responsive */
 
 @media screen and (max-width: 1367px) {
@@ -492,6 +494,9 @@ header a{
 	}
 	.markdown_editor{
 	width: calc(100vw - 90px);
+	}
+	.form-control{
+	width: calc(100vw - 90px) !important;
 	}
 }
 
