@@ -48,7 +48,6 @@
                 });
             
         };
-choo.value = "选择一个文件或直接新增一个文件"
 choo.disabled="true"
 	var ctJson = "/hpp/admin/api/getlist"
         $.getJSON(ctJson, function (data) {
@@ -59,7 +58,8 @@ choo.disabled="true"
             });
 			console.log('get!')
 			 $('#choo').editableSelect();
-		choo.disabled="false"
+		choo.value = "选择一个文件或直接新增一个文件"
+		choo.disabled=""
         });
 	$(function(){
 		$("#mdeditor").markdown({language:'zh'})
@@ -70,8 +70,8 @@ choo.disabled="true"
 		mdeditor.disabled="true"
 	url="/hpp/admin/api/getdoc/"+choo.value+"?_"+Date.now(new Date())
 	loadMarkdown(url);
-		choo.disabled="false"
-		mdeditor.disabled="false"
+		choo.disabled=""
+		mdeditor.disabled=""
 	};
 	function hpp_uploadmarkdown(){
 		choo.disabled="true"
@@ -83,13 +83,13 @@ choo.disabled="true"
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
                 sweetAlert("成功",  "文件已上传", "success");
-		    choo.disabled="false"
-		mdeditor.disabled="false"
+		    choo.disabled=""
+		mdeditor.disabled=""
             }
             else {
                 sweetAlert("糟糕", "上传文件失败!", "error");
-		    choo.disabled="false"
-		mdeditor.disabled="false"
+		    choo.disabled=""
+		mdeditor.disabled=""
             }
         }
     }
