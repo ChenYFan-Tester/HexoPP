@@ -454,7 +454,7 @@ header a{
 }
 
 .form-control{
-	width: calc(100vw - 240px - 74px) !important;
+	width: calc(100vw - 240px - 80px) !important;
 	height: 40px;
 	}
 /* Responsive */
@@ -497,7 +497,7 @@ header a{
 	width: calc(100vw - 90px);
 	}
 	.form-control{
-	width: calc(100vw - 90px - 74px) !important;
+	width: calc(100vw - 90px - 80px) !important;
 	}
 }
 
