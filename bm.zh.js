@@ -14,7 +14,7 @@
     'Ordered List': "有序列表",
     'Code': "代码",
     'Quote': "引用",
-    'Preview': "预览",
+    'Preview': "上传",
     'strong text': "粗体",
     'emphasized text': "强调",
     'heading text': "标题",
