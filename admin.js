@@ -86,6 +86,11 @@ choo.disabled="true"
 		    choo.disabled=""
 		mdeditor.disabled=""
             }
+		else if( ajax.status == 201 ){
+                sweetAlert("成功",  "文件已新建", "success");
+		    choo.disabled=""
+		mdeditor.disabled=""
+            }
             else {
                 sweetAlert("糟糕", "上传文件失败!", "error");
 		    choo.disabled=""
