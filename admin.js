@@ -48,7 +48,7 @@
                 });
             
         };
-choo.disabled="true"
+choo.disabled=true
 	var ctJson = "/hpp/admin/api/getlist"
         $.getJSON(ctJson, function (data) {
             $.each(data, function (index, value) {
@@ -59,23 +59,23 @@ choo.disabled="true"
 			console.log('get!')
 			 $('#choo').editableSelect();
 		choo.value = "选择一个文件或直接新增一个文件"
-		choo.disabled=""
+		choo.disabled=false
         });
 	$(function(){
 		$("#mdeditor").markdown({language:'zh'})
 	});
 
 	function getdoc(){
-		choo.disabled="true"
-		mdeditor.disabled="true"
+		choo.disabled=true
+		mdeditor.disabled=true
 	url="/hpp/admin/api/getdoc/"+choo.value+"?_"+Date.now(new Date())
 	loadMarkdown(url);
-		choo.disabled=""
-		mdeditor.disabled=""
+		choo.disabled=false
+		mdeditor.disabled=false
 	};
 	function hpp_uploadmarkdown(){
-		choo.disabled="true"
-		mdeditor.disabled="true"
+		choo.disabled=true
+		mdeditor.disabled=true
 	var ajax = ajaxObject();
     ajax.open( "post" , '/hpp/admin/api/adddoc/'+choo.value , true );
     ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
@@ -83,20 +83,67 @@ choo.disabled="true"
         if( ajax.readyState == 4 ) {
             if( ajax.status == 200 ) {
                 sweetAlert("成功",  "文件已上传", "success");
-		    choo.disabled=""
-		mdeditor.disabled=""
+		    choo.disabled=false
+		mdeditor.disabled=false
             }
 		else if( ajax.status == 201 ){
                 sweetAlert("成功",  "文件已新建", "success");
-		    choo.disabled=""
-		mdeditor.disabled=""
+		    choo.disabled=false
+		mdeditor.disabled=false
             }
             else {
                 sweetAlert("糟糕", "上传文件失败!", "error");
-		    choo.disabled=""
-		mdeditor.disabled=""
+		    choo.disabled=false
+		mdeditor.disabled=false
             }
         }
     }
     ajax.send(base64Encode(mdeditor.value));
+	};
+
+		 $('#chooimage').editableSelect();
+var input = document.getElementById("input");
+input.addEventListener('change', readFile, false);
+function readFile() {
+   var file = this.files[0];
+    var reader = new FileReader(); 
+    reader.readAsDataURL(file);
+    reader.onloadstart = function (e){ 
+
+        console.log('开始了')
+		
+    }
+    reader.onprogress = function(e){
+    }
+    reader.onload = function (e) {
+        console.log(this.result.substring(this.result.indexOf(',')+1));
+		hpp_uploadimage(this.result.substring(this.result.indexOf(',')+1));
+    }
+    reader.onloadend = function(e){
+        console.log('结束了')
+    }
+}
+
+function hpp_uploadimage(image){
+		input.disabled=true
+	var ajax = ajaxObject();
+    ajax.open( "post" , '/hpp/admin/api/addimage/'+chooimage.value , true );
+    ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
+    ajax.onreadystatechange = function () {
+        if( ajax.readyState == 4 ) {
+            if( ajax.status == 200 ) {
+                sweetAlert("成功",  "图片已上传", "success");
+		    input.disabled=false
+            }
+		else if( ajax.status == 201 ){
+                sweetAlert("成功",  "图片已新建", "success");
+		    input.disabled=false
+            }
+            else {
+                sweetAlert("糟糕", "上传图片失败!", "error");
+		   input.disabled=false
+            }
+        }
+    }
+    ajax.send(image);
 	}
