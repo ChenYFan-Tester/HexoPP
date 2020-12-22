@@ -124,26 +124,4 @@ function readFile() {
     }
 }
 
-function hpp_uploadimage(image){
-		input.disabled=true
-	var ajax = ajaxObject();
-    ajax.open( "post" , '/hpp/admin/api/addimage/'+chooimage.value , true );
-    ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
-    ajax.onreadystatechange = function () {
-        if( ajax.readyState == 4 ) {
-            if( ajax.status == 200 ) {
-                sweetAlert("成功",  "图片已上传", "success");
-		    input.disabled=false
-            }
-		else if( ajax.status == 201 ){
-                sweetAlert("成功",  "图片已新建", "success");
-		    input.disabled=false
-            }
-            else {
-                sweetAlert("糟糕", "上传图片失败!", "error");
-		   input.disabled=false
-            }
-        }
-    }
-    ajax.send(image);
-	}
+
