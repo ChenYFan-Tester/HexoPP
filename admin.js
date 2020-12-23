@@ -122,6 +122,49 @@ function readFile() {
     reader.onloadend = function(e){
         console.log('结束了')
     }
-}
+};
+
+	$("#uptea").click(function () {
+    $("#input").click();
+});
+
+
+function hpp_uploadimage(image){
+		input.disabled=true
+	var ajax = ajaxObject();
+    ajax.open( "post" , '/hpp/admin/api/addimage/'+chooimage.value , true );
+    ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
+    ajax.onreadystatechange = function () {
+        if( ajax.readyState == 4 ) {
+            if( ajax.status == 200 ) {
+                sweetAlert("成功",  "图片已上传", "success");
+		    input.disabled=false
+            }
+		else if( ajax.status == 201 ){
+			const ree=ajax.responseText;
+			swal({
+title: "成功",
+    text: "图片已新建,请复制地址",
+    icon: "success",
+  content: {
+    
+    element: "input",
+    attributes: {
+      value: ree,
+      type: "text",
+    },
+  },
+});
+				
+		    input.disabled=false
+            }
+            else {
+                sweetAlert("糟糕", "上传图片失败!", "error");
+		   input.disabled=false
+            }
+        }
+    }
+    ajax.send(image);
+	}
 
 
