@@ -396,6 +396,7 @@ header a{
 }
 
 .tab-content {
+	
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -406,6 +407,7 @@ header a{
 }
 
 .tab-content section {
+	overflow: auto;
 	position: absolute;
 	width: calc(100vw - 200px);
 	height: calc(100vh - 60px);
