@@ -29,7 +29,7 @@ const loadMarkdown = (url) =>{
     mdeditor.value = '加载中。。。';
     fetch(url, {
         method: 'GET'
-    }).then((resp) = >{
+    }).then((resp) =>{
         return Promise.all([resp.ok, resp.status, resp.text(), resp.headers]);
     }).then(([ok, status, data, headers]) = >{
         if (ok) {
@@ -42,10 +42,10 @@ const loadMarkdown = (url) =>{
         } else {
             throw new Error(JSON.stringify(json.error));
         }
-    }).then((resp) = >{
+    }).then((resp) =>{
         mdeditor.value = resp.data;
     }).
-    catch((error) = >{
+    catch((error) =>{
         mdeditor.value = '';
     });
 
