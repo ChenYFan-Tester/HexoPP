@@ -25,7 +25,7 @@ function ajaxObject() {
     }
     return xmlHttp;
 }
-const loadMarkdown = (url) = >{
+const loadMarkdown = (url) =>{
     mdeditor.value = '加载中。。。';
     fetch(url, {
         method: 'GET'
